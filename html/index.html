@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles/main.css?v=201808300902" />
+        <script src="/libs/qimessaging/2/qimessaging.js"></script>
+        <script src="javascripts/polyfill.js"></script>
+        <script>
+        window.addEventListener("error", handleError, true);
+        function handleError(evt) {
+            if (evt.message) { // Chrome sometimes provides this
+                alert("error: "+evt.message +" at linenumber: "+evt.lineno+" of file: "+evt.filename);
+            } else {
+                alert("error: "+evt.type+" from element: "+(evt.srcElement || evt.target));
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <div class="content">
+        <form method="post" autocomplete="off" novalidate>
+            <div class="survey-group">
+                <div id="start" class="survey-box">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <button type="button" class="btn-navigate" data-next="0">Start</button>
+                </div>
+                <div id="0" class="survey-box">
+                    <h1 data-animated data-auto-transition class="hidden">^run(animations/Stand/Gestures/Hey_3) Hello there! I am Pepper. Welcome to the robot cake bar!</h1>
+                    <button type="button" class="btn-navigate hidden" data-next="1">Let's go!</button>
+                </div>
+                <div id="1" class="survey-box">
+                    <h1 data-animated class="hidden">If you would like to order a cake, please click the make an order button. If you don't feel like having a cake now, please click not now.</h1>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <button type="button" class="btn-navigate" data-next="1-a">Make an order</button>
+                    <button type="button" class="btn-navigate" data-next="1-b">Not now</button>
+                </div>
+				<div id="1-a" class="survey-box">
+                  <h1 data-auto-transition data-animated class="hidden">Roger that.</h1>
+                  <button type="button" class="btn-navigate hidden" data-next="2">Next</button>
+                </div>
+                <div id="1-b" class="survey-box">
+                  <h1 data-animated class="hidden">No problem. Come back any time. ^run(animations/Stand/Gestures/BowShort_1)</h1>
+                  <button type="button" class="btn-navigate" data-next="0">Restart</button>
+                </div>
+                <div id="2" class="survey-box">
+                  <h1 class="hidden" data-animated>\Pau=500\ On today's menu we have four cakes you can order: Chocolate Mug Cake, Cookies and Cream Mug Cake, Birthday Cake Mug Cake, and Strawberry and Cream Mug Cake. Please select which cake you would like to order. Take your time, they are all tasty.</h1>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <button type="button" class="btn-navigate" data-next="2-a">Chocolate</button>
+				  <button type="button" class="btn-navigate" data-next="2-b">Cookies</button>
+				  <button type="button" class="btn-navigate" data-next="2-c">Strawberry</button>
+				  <button type="button" class="btn-navigate" data-next="2-d">Birthday</button>
+                  <button type="button" class="btn-navigate" data-next="1-b">Maybe next time</button>
+                </div>
+				<div id="2-a" class="survey-box">
+                  <h1 data-animated class="hidden">Just to confirm, is this what you want?</h1>
+				  <img src="chocolate.jpg" alt="chocolate mug cake" height="325">
+                  <p> </p>
+                  <button type="button" class="btn-navigate" onclick="recordResp('Chocolate','false');" data-next="2-a-1">Yes, give me that chocolate mug cake!</button>
+				  <button type="button" class="btn-navigate" data-next="2">No, I want to change my order.</button>
+                </div>
+				<div id="2-b" class="survey-box">
+                  <h1 data-animated class="hidden">Just to confirm, is this what you want?</h1>
+				  <img src="cookie.jpg" alt="cookie mug cake" height="325">
+                  <p> </p>
+                  <button type="button" class="btn-navigate" onclick="recordResp('CookiesAndCream','false');" data-next="2-b-1">Yes, give me that cookies and cream mug cake!</button>
+				  <button type="button" class="btn-navigate" data-next="2">No, I want to change my order.</button>
+                </div>
+				<div id="2-c" class="survey-box">
+                  <h1 data-animated class="hidden">Just to confirm, is this what you want?</h1>
+				  <img src="strawberry.jpg" alt="strawberry mug cake" height="325">
+                  <p> </p>
+                  <button type="button" class="btn-navigate" onclick="recordResp('Strawberry','false');" data-next="2-c-1">Yes, give me that strawberry mug cake!</button>
+				  <button type="button" class="btn-navigate" data-next="2">No, I want to change my order.</button>
+                </div>
+				<div id="2-d" class="survey-box">
+                  <h1 data-animated class="hidden">Just to confirm, is this what you want?</h1>
+				  <img src="birthday.jpg" alt="birthday mug cake" height="325">
+                  <p> </p>
+                  <button type="button" class="btn-navigate" onclick="recordResp('Birthday','false');" data-next="2-d-1">Yes, give me that birthday mug cake!</button>
+				  <button type="button" class="btn-navigate" data-next="2">No, I want to change my order.</button>
+                </div>
+				<div id="2-a-1" class="survey-box">
+                  <h1 data-animated class="hidden">Thank you for your order! Please step to your left while Fetch comes to collect your order. \Pau=1000\ Hi Fetch, we've got a customer. Can you please make a chocolate mug cake? Thank you!</h1>
+				  <p> </p>
+				  <img src="MarkerData_0.png" alt="chocolate aruco" height="300">
+				  <p> </p>
+                  <button type="button" class="btn-navigate" data-next="3">Order taken</button>
+                </div>
+				<div id="2-b-1" class="survey-box">
+                  <h1 data-animated class="hidden">Thank you for your order! Please step to your left while Fetch comes to collect your order.\Pau=1000\ Hi Fetch, we've got a customer. Can you please make a cookie mug cake? Thank you!</h1>
+				  <p> </p>
+				  <img src="MarkerData_1.png" alt="cookie aruco" height="300">
+				  <p> </p>
+                  <button type="button" class="btn-navigate" data-next="3">Order taken</button>
+                </div>
+				<div id="2-c-1" class="survey-box">
+                  <h1 data-animated class="hidden">Thank you for your order! Please step to your left while Fetch comes to collect your order.\Pau=1000\ Hi Fetch, we've got a customer. Can you please make a strawberry mug cake? Thank you!</h1>
+				  <p> </p>
+				  <img src="MarkerData_2.png" alt="strawberry aruco" height="300">
+				  <p> </p>
+                  <button type="button" class="btn-navigate" data-next="3">Order taken</button>
+                </div>
+				<div id="2-d-1" class="survey-box">
+                  <h1 data-animated class="hidden">^run(animations/Stand/Waiting/HappyBirthday_1) Thank you for your order, and happy birthday to you! Please step to your left while Fetch comes to collect your order.\Pau=1000\ Hi Fetch, we've got a customer. Can you please make a birthday mug cake? Thank you!</h1>
+				  <p> </p>
+				  <img src="MarkerData_3.png" alt="birthday aruco" height="300">
+				  <p> </p>
+                  <button type="button" class="btn-navigate" data-next="3">Order taken</button>
+                </div>
+                <div id="3" class="survey-box">
+                  <h1 data-animated class="hidden">Alright. The Mug Cake is on its way. Fetch will need your help in the kitchen, you can follow them now, and they will give you some instructions. \Pau=500\ Please come back to see me when your cake is ready.</h1>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <button type="button" class="btn-navigate" data-next="4">The cake is here!</button>
+                </div>
+                <div id="4" class="survey-box">
+                  <h1 data-animated class="hidden">Please enjoy your cake, and thank you for visiting the robot cake bar today! Be careful, the cup can be quite hot. \Pau=750\ While you eat your cake, would you like me to tell you a bit more about the robot cake bar? </h1>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <button type="button" class="btn-navigate" data-next="5-a">Yes</button>
+                  <button type="button" class="btn-navigate" data-next="5-b">No</button>
+                </div>
+                <div id="5-a" class="survey-box">
+                  <h1 data-auto-transition data-animated class="hidden">Okay. \Pau=750\ The robot cake bar is designed by the human-robot interaction research group. I am your waiter and Fetch is your chef of the day. To be able to bring you the cake of your choice, we need to be able to perform detection, manipulation, navigation, and conversation. We are specialized in one or more of these functions. \Pau=1000\ As you may have noticed, my specialty is conversation. Fetch is good at detection and manipulation. We are still learning and can be clumsy at times, so please bear with us. \Pau=1000\ If you would like to know more or want to join the robot hackathon, please go to one of our human teammates.</h1>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <button type="button" class="btn-navigate hidden" data-next="6">Next</button>
+                </div>
+                <div id="5-b" class="survey-box">
+                  <h1 data-auto-transition data-animated class="hidden">Okay.</h1>
+                  <p></p>
+                  <p></p>
+                  <p></p>
+                  <button type="button" class="btn-navigate hidden" data-next="6">Next</button>
+                </div>
+                <div id="6" class="survey-box">
+                  <h1 data-animated class="hidden">\Pau=750\ If you have a moment, it would be greatly appreciated if you could fill in the quick survey on my tablet.</h1>
+                  <p></p>
+                  <h1>How would you rate your experience today?</h1>
+                  <h2 class="likert">
+                      <span>Catastrophic</span>Okay-ish<span>Awesome</span>
+                  </h2>
+                  <p>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="0" data-replace="x:0">0<span class="checkmark"></span></label>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="1" data-replace="x:1">1<span class="checkmark"></span></label>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="2" data-replace="x:2">2<span class="checkmark"></span></label>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="3" data-replace="x:3">3<span class="checkmark"></span></label>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="4" data-replace="x:4">4<span class="checkmark"></span></label>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="5" data-replace="x:5">5<span class="checkmark"></span></label>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="6" data-replace="x:6">6<span class="checkmark"></span></label>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="7" data-replace="x:7">7<span class="checkmark"></span></label>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="8" data-replace="x:8">8<span class="checkmark"></span></label>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="9" data-replace="x:9">9<span class="checkmark"></span></label>
+                      <label class="radio-container"><input type="radio" name="likert_ux" value="10" data-replace="x:10">10<span class="checkmark"></span></label>
+                  </p>
+                  <button type="button" class="btn-navigate" onclick="recordResp('likert_ux','true');" data-next="7">Submit</button>
+              </div>
+              <div id="7" class="survey-box">
+                  <h1 data-animated class="hidden">Thank you for filling out the survey! I hope to see you again soon. ^run(animations/Stand/Gestures/BowShort_1)</h1>
+                  <p></p>
+                  <button type="button" class="btn-navigate" data-next="0">Restart</button>
+                </div>
+            <div class="popup">
+                <span class="popuptext" id="invalid-popup"><span style="color: red">&#10071;</span> <span id="invalid-message"></span></span>
+            </div>
+        </form>
+        </div>
+        <footer id="progress-bar" class="progress-bar"></footer>
+        <script src="javascripts/main.js?v=201808300902"></script>
+    </body>
+</html>
